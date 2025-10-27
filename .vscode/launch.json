@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "probe-rs-debug",
+      "request": "launch",
+      "name": "probe_rs Executable launch example",
+      "cwd": "${workspaceFolder}",
+      //!MODIFY (or remove)
+      "speed": 24000,
+      //!MODIFY (or remove)
+      //"probe": "VID:PID:<Serial>",
+      "runtimeExecutable": "probe-rs",
+      "runtimeArgs": ["dap-server"],
+      //!MODIFY
+      "chip": "STM32F401RE",
+      "flashingConfig": {
+        "flashingEnabled": true,
+        "haltAfterReset": false,
+        "formatOptions": {
+          //!MODIFY (or remove). Valid values are: 'bin', 'hex', 'elf'(default), 'idf'
+          "binaryFormat": "elf"
+        }
+      },
+      "coreConfigs": [
+        {
+          "coreIndex": 0,
+          //!MODIFY
+          "programBinary": "target/thumbv7em-none-eabihf/debug/hippo_v2",
+          //!MODIFY
+          "svdFile": "STM32F401.svd"
+        }
+      ],
+      "env": {
+        //!MODIFY (or remove)
+        // If you set this variable, check the VSCode console log window for the location of the log file.
+        "RUST_LOG": "info"
+      },
+       // Info, Debug
+      "consoleLogLevel": "Console"
+    }
+  ],
+
+  "setupCommands": [
+    {
+        "description": "Enable pretty-printing for gdb",
+        "text": "-enable-pretty-printing",
+        "ignoreFailures": true
+    },
+    { "text": "set output-radix 16" }
+]
+
+}

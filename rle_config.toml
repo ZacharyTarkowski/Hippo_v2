@@ -1,0 +1,10 @@
+[options]
+dummy = 1
+
+[images]
+image_list = [
+    "Hippo_Images/Hippo_Asleep_1.png", 
+    "Hippo_Images/Hippo_Asleep_2.png",
+    "Hippo_Images/Hippo_Awake_1.png", 
+    "Hippo_Images/Hippo_Awake_2.png",
+    ]

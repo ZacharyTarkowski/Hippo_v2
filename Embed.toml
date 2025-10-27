@@ -1,0 +1,13 @@
+[default.general]
+chip = "STM32F401RE"
+
+[default.rtt]
+enabled = true
+
+[default.gdb]
+enabled = false
+
+[default.reset]
+halt_afterwards = false
+
+[env]

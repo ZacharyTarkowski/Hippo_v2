@@ -1,0 +1,1 @@
+pub static image_1 : &'static str = "Hippo_Images/Hippo_Asleep_1.png.bin";
