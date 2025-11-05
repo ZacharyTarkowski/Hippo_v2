@@ -124,6 +124,16 @@ mod app {
         Mono::start(ctx.core.SYST, 48_000_000);
 
         let mut rcc = ctx.device.RCC.freeze(Config::hsi().sysclk(48.MHz()));
+
+        // let mut rcc = ctx.device.RCC.freeze(
+        //     Config::hse(25.MHz())
+        //         .require_pll48clk()
+        //         .sysclk(84.MHz())
+        //         .hclk(84.MHz())
+        //         .pclk1(42.MHz())
+        //         .pclk2(84.MHz()),
+        // );
+
         let gpioa = ctx.device.GPIOA.split(&mut rcc);
         let gpiob = ctx.device.GPIOB.split(&mut rcc);
         let gpioc = ctx.device.GPIOC.split(&mut rcc);
@@ -158,9 +168,11 @@ mod app {
                     polarity: Polarity::IdleLow,
                     phase: Phase::CaptureOnFirstTransition,
                 },
-                32.MHz(),
+                48.MHz(),
                 &mut rcc,
             );
+
+        //defmt::info!("{:?}", spi.);
 
         let spi_device = ExclusiveDevice::new_no_delay(spi, cs).unwrap();
 
