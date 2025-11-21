@@ -107,12 +107,12 @@ mod app {
             SPIInterface<
                 ExclusiveDevice<
                     Spi<stm32f4::Periph<pac::spi1::RegisterBlock, 1073819648>>,
-                    stm32f4xx_hal::gpio::Pin<'B', 10, Output>,
+                    stm32f4xx_hal::gpio::Pin<'A', 11, Output>,
                     NoDelay,
                 >,
-                stm32f4xx_hal::gpio::Pin<'A', 8, Output>,
+                stm32f4xx_hal::gpio::Pin<'A', 15, Output>,
             >,
-            stm32f4xx_hal::gpio::Pin<'A', 9, Output>,
+            stm32f4xx_hal::gpio::Pin<'A', 12, Output>,
         >,
         pir_sensor: stm32f4xx_hal::gpio::Pin<'B', 0>,
     }
@@ -154,11 +154,11 @@ mod app {
         let sclk = gpiob.pb3.into_alternate();
 
         let mosi = gpiob.pb5.into_alternate();
-        let cs = gpiob.pb10.into_push_pull_output();
-        let dc = gpioa.pa8.into_push_pull_output();
-        let reset_gpio = gpioa.pa9.into_push_pull_output();
-        gpioc
-            .pc7
+        let cs = gpioa.pa11.into_push_pull_output();
+        let dc = gpioa.pa15.into_push_pull_output();
+        let reset_gpio = gpioa.pa12.into_push_pull_output();
+        gpioa
+            .pa10
             .into_push_pull_output_in_state(stm32f4xx_hal::gpio::PinState::High);
 
         let spi: Spi<stm32f4::Periph<stm32f4xx_hal::pac::spi1::RegisterBlock, 1073819648>> =
