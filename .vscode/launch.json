@@ -13,7 +13,7 @@
       "runtimeExecutable": "probe-rs",
       "runtimeArgs": ["dap-server"],
       //!MODIFY
-      "chip": "STM32F401RE",
+      "chip": "STM32F401RCTx",
       "flashingConfig": {
         "flashingEnabled": true,
         "haltAfterReset": false,
